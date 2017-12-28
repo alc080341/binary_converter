@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<!-- How characters are defined -->
+	<meta name="description" content="A Roman Numeral Converter">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/stylesheet.css">
+ 	<script type="text/javascript">
+ 		
+function binaryAgent(str, dec_or_bin) {
+  
+  var binaryArray;
+  var decimalArray = [];
+  var stringArray = [];
+  var currentValue;
+  var currentValueToNum;
+  var currentValueToStr;
+  var textArray = str.split("");
+  var returnArray;
+
+
+if(dec_or_bin === "toDec")
+
+{  
+  binaryArray = str.split(" ");
+  //Convert each binary value to a decimal equivelant using parseInt and base 2 number system
+  for (var i=0; i<binaryArray.length; i++)
+    {
+      decimalArray[i] = parseInt(binaryArray[i], 2);
+      //Convert each decimal value to ASCII letter equivelent
+      stringArray[i] = String.fromCharCode(decimalArray[i]);
+    }
+  
+  	returnArray = stringArray.join("");
+}
+
+
+else if(dec_or_bin === "toBin")
+{
+	for (var j=0; j<textArray.length; j++)
+    {
+
+
+      currentValue = String.charCodeAt(textArray[j]);
+      currentValueToNum = parseInt(currentValue);
+      currentValueToStr = currentValueToNum.toString(2);
+      decimalArray[j] = currentValueToStr;
+      stringArray[j] = "0" + decimalArray[j] + " ";
+
+    }
+  
+  	returnArray = stringArray.join("");
+
+}
+
+
+	document.getElementById("return_text").innerHTML = returnArray;
+}
+
+ 	</script>
+	<title>Binary Converter</title>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+		<div class="input_area">
+		<h1>Convert between text and binary values</h1>
+		<br/>
+		<br/>
+		<form>
+			<p><input type="text" id="original_number" name="original_number" class="original_number">
+			
+			<br/>
+			<button type="button" class="btn btn-primary btn-lg" onclick="binaryAgent(this.form.original_number.value, 'toDec');">Convert Binary to text!</button></p>
+			<br/>
+			<br/>
+	
+	
+			<p><input type="text" id="original_text" name="original_text" class="original_text">
+			
+			<br/>
+			<button type="button" class="btn btn-primary btn-lg" onclick="binaryAgent(this.form.original_text.value, 'toBin');">Convert text to Binary!</button></p>
+
+
+			<div id="return_text" class="return_text"></div>
+	
+			</p>
+		</form>
+		<br>
+			
+			</div>
+		<div>
+	</div>
+
+</div>
+	
+
+
+
+</body>
+
+
+
+
+</html>
+
+
+
+
